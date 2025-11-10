@@ -83,18 +83,25 @@ header {
       cursor: pointer;
       background: linear-gradient(90deg, rgba(17, 115, 212, 0) 100%, #1173d4 0%),
         linear-gradient(0deg, #1173d4, #1173d4);
-        color: #F9FAFB;
+      color: #f9fafb;
+
+      &:hover {
+        background: #1c60b4;
+      }
     }
 
     button {
       width: 162px;
       height: 44px;
-      border: 1px solid #1173D4;
+      border: 1px solid #1173d4;
       border-radius: 10px;
       font-size: 1rem;
       cursor: pointer;
-      background: #F9FAFB;
-      color: #1173D4;
+      background: #f9fafb;
+      color: #1173d4;
+      &:hover {
+        background: #e0e7ff;
+      }
     }
   }
 }
