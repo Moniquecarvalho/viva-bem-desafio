@@ -12,7 +12,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("./assets/image/bannerHeader.png");
+  background-image: none;
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -21,6 +21,7 @@ header .box-header {
   width: 80%;
   height: 10vh;
   border-radius: 50px;
+  font-family: "Roboto", sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -36,6 +37,18 @@ header .box-header nav {
 header .box-header nav a {
   color: #fff;
   font-family: "Roboto", sans-serif;
+}
+@media (min-width: 320px) {
+  header {
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (min-width: 768px) {
+  header {
+    background-image: url("./assets/image/bannerHeader.png");
+  }
 }
 
 .box-banner {
@@ -58,14 +71,29 @@ header .box-header nav a {
   color: transparent;
   font-weight: bold;
 }
+@media (min-width: 320px) {
+  .box-banner .box-titulo h2 {
+    font-size: 2rem;
+    text-align: center;
+    width: 253px;
+  }
+}
 .box-banner .box-titulo p {
   margin-top: 20px;
   font-size: 1.2rem;
   padding-right: 250px;
 }
+@media (min-width: 320px) {
+  .box-banner .box-titulo p {
+    text-align: center;
+    width: 223px;
+    padding-right: 0px;
+  }
+}
 .box-banner .box-botoes {
   margin-top: 40px;
   display: flex;
+  align-items: center;
   gap: 20px;
 }
 .box-banner .box-botoes .btn-blue {
@@ -81,6 +109,12 @@ header .box-header nav a {
 .box-banner .box-botoes .btn-blue:hover {
   background: #1c60b4;
 }
+@media (min-width: 320px) {
+  .box-banner .box-botoes .btn-blue {
+    width: 162px;
+    font-size: 14px;
+  }
+}
 .box-banner .box-botoes button {
   width: 162px;
   height: 44px;
@@ -93,4 +127,27 @@ header .box-header nav a {
 }
 .box-banner .box-botoes button:hover {
   background: #e0e7ff;
+}
+@media (min-width: 320px) {
+  .box-banner .box-botoes button {
+    width: 107px;
+    font-size: 14px;
+  }
+}
+@media (min-width: 480px) {
+  .box-banner .box-botoes {
+    gap: 10px;
+  }
+}
+@media (min-width: 320px) {
+  .box-banner .box-botoes {
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+}
+@media (min-width: 320px) {
+  .box-banner {
+    padding-right: 0;
+  }
 }/*# sourceMappingURL=style.css.map */

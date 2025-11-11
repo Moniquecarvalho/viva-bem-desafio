@@ -8,12 +8,30 @@
   font-family: "Inter", sans-serif;
 }
 
+$breakpoints: (
+  "xs": 320px,
+  // celular pequeno
+  "sm": 480px,
+  // celular comum
+  "md": 768px,
+  // tablet
+  "lg": 1024px,
+  // notebook
+  "xl": 1280px // desktop,,,,,,,,
+);
+
+@mixin respond-to($size) {
+  @media (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
 header {
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("./assets/image/bannerHeader.png");
+  background-image: none;
   background-repeat: no-repeat;
   background-size: contain;
 
@@ -22,6 +40,7 @@ header {
     width: 80%;
     height: 10vh;
     border-radius: 50px;
+    font-family: "Roboto", sans-serif;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -39,6 +58,31 @@ header {
         font-family: "Roboto", sans-serif;
       }
     }
+    // @include respond-to("xs") {
+    //   width: 95%;
+    //   padding: 0 15px;
+
+    //   img {
+    //     width: 110px;
+    //     padding-right: 10px;
+    //   }
+    //   nav {
+    //     width: 100%;
+    //     justify-content: space-between;
+    //     a {
+    //       font-size: 14px;
+    //     }
+    //   }
+    // }
+  }
+  @include respond-to("xs") {
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include respond-to("md") {
+    background-image: url("./assets/image/bannerHeader.png");
   }
 }
 
@@ -61,17 +105,31 @@ header {
       background-clip: text;
       color: transparent;
       font-weight: bold;
+
+      @include respond-to("xs") {
+        font-size: 2rem;
+        text-align: center;
+        width: 253px;
+      }
     }
+
     p {
       margin-top: 20px;
       font-size: 1.2rem;
       padding-right: 250px;
+
+      @include respond-to("xs") {
+        text-align: center;
+        width: 223px;
+        padding-right: 0px;
+      }
     }
   }
 
   .box-botoes {
     margin-top: 40px;
     display: flex;
+    align-items: center;
     gap: 20px;
 
     .btn-blue {
@@ -88,6 +146,11 @@ header {
       &:hover {
         background: #1c60b4;
       }
+
+      @include respond-to("xs") {
+        width: 162px;
+        font-size: 14px;
+      }
     }
 
     button {
@@ -102,6 +165,22 @@ header {
       &:hover {
         background: #e0e7ff;
       }
+      @include respond-to("xs") {
+        width: 107px;
+        font-size: 14px;
+      }
     }
+    @include respond-to("sm") {
+      gap: 10px;
+    }
+
+    @include respond-to("xs") {
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+  @include respond-to("xs") {
+    padding-right: 0;
   }
 }
