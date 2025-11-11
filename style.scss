@@ -27,7 +27,7 @@ $breakpoints: (
 }
 
 header {
-  height: 90vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,5 +182,120 @@ header {
   }
   @include respond-to("xs") {
     padding-right: 0;
+  }
+}
+
+.section-exames {
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include respond-to('md') {
+    padding: 80px 40px;
+  }
+
+  @include respond-to('lg') {
+    padding: 100px 60px;
+  }
+
+  .container-exames {
+    max-width: 1200px;
+    width: 100%;
+
+    h2 {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #1173d4 0%, #33cc73 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+
+      @include respond-to('md') {
+        font-size: 2.2rem;
+      }
+
+      @include respond-to('lg') {
+        font-size: 2.5rem;
+      }
+    }
+
+    .descricao {
+      text-align: center;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: #04031c;
+      margin-bottom: 40px;
+      padding: 0 10px;
+
+      @include respond-to('md') {
+        font-size: 1rem;
+        padding: 0 60px;
+      }
+
+      @include respond-to('lg') {
+        font-size: 1.05rem;
+        padding: 0 120px;
+      }
+    }
+
+    .cards-exames {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+
+      @include respond-to('md') {
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+      }
+
+      .card {
+        background: #f9fafb;
+        border-radius: 10px;
+        padding: 30px 20px;
+        box-shadow: 0px 0px 10px 0px #00000040;
+        text-align: center;
+        width: 282px;
+        height: 202px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        @include respond-to('md') {
+          width: 30%;
+          max-width: none;
+        }
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0px 0px 20px 0px #00000060;
+        }
+
+        h3 {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: #1173d4;
+          margin-top: 15px;
+          margin-bottom: 15px;
+          color: #04031c;
+
+          @include respond-to('md') {
+            font-size: 1.3rem;
+          }
+        }
+
+        p {
+          font-size: 1.125rem;
+          color: #04031c;
+          line-height: 1.5;
+
+          @include respond-to('md') {
+            font-size: 0.95rem;
+          }
+        }
+      }
+    }
   }
 }
