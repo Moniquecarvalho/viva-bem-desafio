@@ -22,6 +22,20 @@ $breakpoints: (
   }
 }
 
+$cores-alertas: (
+  rosa-bg: #f9d5e5,
+  rosa-texto: #ad346a,
+
+  azul-bg: #cfe2f3,
+  azul-texto: #2769a3,
+
+  verde-bg: #d4edda,
+  verde-texto: #244a2d,
+
+  amarelo-bg: #ffe9c2,
+  amarelo-texto: #976c00,
+);
+
 header {
   height: 100vh;
   display: flex;
@@ -145,26 +159,30 @@ header {
       cursor: pointer;
       background: #f9fafb;
       color: #1173d4;
+
       &:hover {
         background: #e0e7ff;
       }
-      @include respond-to("xs") {
-        width: 107px;
-        font-size: 14px;
-      }
-    }
-    @include respond-to("sm") {
-      gap: 10px;
-    }
 
-    @include respond-to("xs") {
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
+      // @include respond-to("xs") {
+      //   width: 107px;
+      //   font-size: 14px;
+      // }
+
+      // @include respond-to("sm") {
+      //   gap: 10px;
+      // }
+
+      // @include respond-to("xs") {
+      //   justify-content: center;
+      //   align-items: center;
+      //   gap: 10px;
+      // }
+
+      // @include respond-to("xs") {
+      //   padding-right: 0;
+      // }
     }
-  }
-  @include respond-to("xs") {
-    padding-right: 0;
   }
 }
 
@@ -378,6 +396,97 @@ header {
             color: #000;
             line-height: 1.25rem;
             margin-bottom: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.section-alertas {
+  padding: 60px 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .container-alertas {
+    max-width: 1200px;
+    width: 100%;
+
+    h2 {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
+    .cards-alertas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+
+      .card-alerta {
+        background: #fff;
+        border-radius: 15px;
+        padding: 25px 20px;
+        margin-bottom: 25px;
+        width: 100%;
+        max-width: 450px;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        &.rosa {
+          background: map-get($cores-alertas, "rosa-bg");
+
+          h3,
+          p {
+            color: map-get($cores-alertas, "rosa-texto");
+          }
+        }
+
+        &.azul {
+          background: map-get($cores-alertas, "azul-bg");
+
+          h3,
+          p {
+            color: map-get($cores-alertas, "azul-texto");
+          }
+        }
+
+        &.verde {
+          background: map-get($cores-alertas, "verde-bg");
+
+          h3,
+          p {
+            color: map-get($cores-alertas, "verde-texto");
+          }
+        }
+
+        &.amarelo {
+          background: map-get($cores-alertas, "amarelo-bg");
+
+          h3,
+          p {
+            color: map-get($cores-alertas, "amarelo-texto");
+          }
+        }
+
+        .cabecalho {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          margin-bottom: 15px;
+
+          h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin: 0;
           }
         }
       }
