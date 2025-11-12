@@ -267,4 +267,61 @@ header .box-header nav a:hover {
   .section-exames .container-exames .cards-exames .card p {
     font-size: 0.95rem;
   }
+}
+
+.section-feminina {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fdefef;
+}
+.section-feminina .container-feminina {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-feminina .container-feminina h2 {
+  font-size: 2.8rem;
+  text-align: center;
+  margin: 54px;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(249, 1, 111, 0.54) 0%, rgba(147, 8, 133, 0.619615) 41.83%, rgba(208, 56, 170, 0.754793) 70.19%, #851c87 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.section-feminina .container-feminina .cards-feminina {
+  display: flex;
+  gap: 20px;
+}
+.section-feminina .container-feminina .cards-feminina .card-feminina {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  background: #fff;
+  padding: 11px 0;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.section-feminina .container-feminina .cards-feminina .card-feminina img {
+  padding-bottom: 20px;
+}
+.section-feminina .container-feminina .cards-feminina .card-feminina h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 15px;
+}
+.section-feminina .container-feminina .cards-feminina .card-feminina ul {
+  list-style: disc;
+  padding-left: 30px;
+}
+.section-feminina .container-feminina .cards-feminina .card-feminina ul li {
+  font-size: 0.875rem;
+  color: #000;
+  line-height: 1.6;
+  margin-bottom: 8px;
 }/*# sourceMappingURL=style.css.map */
