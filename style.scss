@@ -1,13 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: "Inter", sans-serif;
-}
-
+// Breakpoints
 $breakpoints: (
   "xs": 320px,
   "sm": 480px,
@@ -16,28 +9,118 @@ $breakpoints: (
   "xl": 1280px,
 );
 
+// Fontes
+$font-primary: "Inter", sans-serif;
+$font-secondary: "Roboto", sans-serif;
+$font-tertiary: "Poppins", sans-serif;
+
+// Cores Base
+$cor-texto: #04031c;
+$cor-branco: #fff;
+$cor-cinza-claro: #f9fafb;
+$cor-cinza-medio: #d1d5db;
+$cor-cinza-escuro: #313461;
+$cor-borda: #9fabbc;
+
+// Cores de Gradiente
+$cor-gradiente-azul-1: #4247a2;
+$cor-gradiente-azul-2: #52b095;
+$cor-gradiente-azul-3: #1173d4;
+$cor-gradiente-verde: #33cc73;
+
+// Cores de Botões
+$cor-botao-primario: #1173d4;
+$cor-botao-primario-hover: #1c60b4;
+$cor-botao-secundario-hover: #e0e7ff;
+
+// Cores de Background
+$cor-bg-secao-1: #f8f9fa;
+$cor-bg-secao-2: #fdefef;
+
+// Cores de Alertas
+$cores-alertas: (
+  rosa-bg: #f9d5e5,
+  rosa-texto: #ad346a,
+  azul-bg: #cfe2f3,
+  azul-texto: #2769a3,
+  verde-bg: #d4edda,
+  verde-texto: #244a2d,
+  amarelo-bg: #ffe9c2,
+  amarelo-texto: #976c00,
+);
+
+// Espaçamentos
+$spacing-xs: 10px;
+$spacing-sm: 15px;
+$spacing-md: 20px;
+$spacing-lg: 30px;
+$spacing-xl: 40px;
+$spacing-2xl: 60px;
+
+// Tamanhos de Fonte
+$font-size-xs: 0.875rem;
+$font-size-sm: 0.95rem;
+$font-size-base: 1rem;
+$font-size-md: 1.125rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.6rem;
+$font-size-2xl: 2.8rem;
+
+// Border Radius
+$radius-sm: 10px;
+$radius-md: 15px;
+$radius-lg: 50px;
+
+// Sombras
+$shadow-light: 0px 2px 8px rgba(0, 0, 0, 0.1);
+$shadow-medium: 0px 4px 4px 0px #00000040;
+$shadow-dark: 0px 0px 10px 0px #00000040;
+$shadow-hover: 0px 0px 20px 0px #00000060;
+
+// Transições
+$transition-default: 0.3s ease;
+
+// Dimensões
+$header-height: 90vh;
+$header-box-height: 10vh;
+$max-width-container: 1200px;
+$max-width-footer: 1440px;
+
 @mixin respond-to($size) {
   @media (min-width: map-get($breakpoints, $size)) {
     @content;
   }
 }
 
-$cores-alertas: (
-  rosa-bg: #f9d5e5,
-  rosa-texto: #ad346a,
+@mixin texto-gradiente($cor1: $cor-gradiente-azul-3, $cor2: $cor-gradiente-verde) {
+  background: linear-gradient(to right, $cor1 0%, $cor2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: $font-size-2xl;
+  font-weight: bold;
+}
 
-  azul-bg: #cfe2f3,
-  azul-texto: #2769a3,
+@mixin card-hover {
+  transition: transform $transition-default, box-shadow $transition-default;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-hover;
+  }
+}
 
-  verde-bg: #d4edda,
-  verde-texto: #244a2d,
-
-  amarelo-bg: #ffe9c2,
-  amarelo-texto: #976c00,
-);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: $font-primary;
+}
 
 header {
-  height: 100vh;
+  height: $header-height;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,34 +129,33 @@ header {
   background-size: contain;
 
   @include respond-to("md") {
-    height: 90vh;
     background-image: url("./assets/image/bannerHeader.png");
     padding: 0;
   }
 
   .box-header {
-    margin-top: 30px;
+    margin-top: $spacing-lg;
     width: 80%;
-    height: 10vh;
-    border-radius: 50px;
-    font-family: "Roboto", sans-serif;
+    height: $header-box-height;
+    border-radius: $radius-lg;
+    font-family: $font-secondary;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: linear-gradient(to right, #4247a2 0%, #52b095 100%);
+    background: linear-gradient(to right, $cor-gradiente-azul-1 0%, $cor-gradiente-azul-2 100%);
 
     nav {
       width: 40%;
-      height: 10vh;
+      height: $header-box-height;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
 
       a {
-        color: #fff;
-        font-family: "Roboto", sans-serif;
-        font-size: 1.25rem;
-        transition: opacity 0.3s ease;
+        color: $cor-branco;
+        font-family: $font-secondary;
+        font-size: $font-size-lg;
+        transition: opacity $transition-default;
 
         &:hover {
           opacity: 0.8;
@@ -94,54 +176,38 @@ header {
     height: 60vh;
 
     h2 {
-      font-size: 2.7rem;
-      font-weight: bold;
-      background: linear-gradient(to right, #1173d4 0%, #33cc73 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-      font-weight: bold;
-
-      @include respond-to("xs") {
-        font-size: 2rem;
-        text-align: center;
-        width: 253px;
-      }
+      width: 524px;
+      @include texto-gradiente();
     }
 
     p {
-      margin-top: 20px;
-      font-size: 1.2rem;
-      padding-right: 250px;
-
-      @include respond-to("xs") {
-        text-align: center;
-        width: 223px;
-        padding-right: 0px;
-      }
+      margin-top: $spacing-md;
+      font-size: $font-size-xl;
+      padding-right: 361px;
+      color: $cor-texto;
     }
   }
 
   .box-botoes {
-    margin-top: 40px;
+    margin-top: $spacing-xl;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: $spacing-md;
 
     .btn-blue {
       width: 257px;
       height: 44px;
       border: none;
-      border-radius: 10px;
-      font-size: 1rem;
+      border-radius: $radius-sm;
+      font-size: $font-size-base;
       cursor: pointer;
-      background: linear-gradient(90deg, rgba(17, 115, 212, 0) 100%, #1173d4 0%),
-        linear-gradient(0deg, #1173d4, #1173d4);
-      color: #f9fafb;
+      background: linear-gradient(90deg, rgba(17, 115, 212, 0) 100%, $cor-botao-primario 0%),
+        linear-gradient(0deg, $cor-botao-primario, $cor-botao-primario);
+      color: $cor-cinza-claro;
+      transition: background $transition-default;
 
       &:hover {
-        background: #1c60b4;
+        background: $cor-botao-primario-hover;
       }
 
       @include respond-to("xs") {
@@ -153,147 +219,84 @@ header {
     button {
       width: 162px;
       height: 44px;
-      border: 1px solid #1173d4;
-      border-radius: 10px;
-      font-size: 1rem;
+      border: 1px solid $cor-botao-primario;
+      border-radius: $radius-sm;
+      font-size: $font-size-base;
       cursor: pointer;
-      background: #f9fafb;
-      color: #1173d4;
+      background: $cor-cinza-claro;
+      color: $cor-botao-primario;
+      transition: background $transition-default;
 
       &:hover {
-        background: #e0e7ff;
+        background: $cor-botao-secundario-hover;
       }
-
-      // @include respond-to("xs") {
-      //   width: 107px;
-      //   font-size: 14px;
-      // }
-
-      // @include respond-to("sm") {
-      //   gap: 10px;
-      // }
-
-      // @include respond-to("xs") {
-      //   justify-content: center;
-      //   align-items: center;
-      //   gap: 10px;
-      // }
-
-      // @include respond-to("xs") {
-      //   padding-right: 0;
-      // }
     }
   }
 }
 
 .section-exames {
-  padding: 60px 20px;
+  background: $cor-bg-secao-1;
+  padding: 55px $spacing-md;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  @include respond-to("md") {
-    padding: 80px 40px;
-  }
-
-  @include respond-to("lg") {
-    padding: 100px 60px;
-  }
-
   .container-exames {
-    max-width: 1200px;
+    max-width: $max-width-container;
     width: 100%;
 
     h2 {
-      font-size: 1.8rem;
       text-align: center;
-      margin-bottom: 20px;
-      background: linear-gradient(to right, #1173d4 0%, #33cc73 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-
-      @include respond-to("md") {
-        font-size: 2.2rem;
-      }
-
-      @include respond-to("lg") {
-        font-size: 2.5rem;
-      }
+      margin-bottom: 26px;
+      @include texto-gradiente();
     }
 
     .descricao {
       text-align: center;
-      font-size: 1.25rem;
+      font-size: $font-size-lg;
       line-height: 1.6;
-      color: #04031c;
-      margin-bottom: 40px;
-      padding: 0 10px;
-
-      @include respond-to("md") {
-        font-size: 1rem;
-        padding: 0 60px;
-      }
-
-      @include respond-to("lg") {
-        font-size: 1.05rem;
-        padding: 0 120px;
-      }
+      color: $cor-texto;
+      margin-bottom: $spacing-xl;
+      padding: 0 122px;
     }
 
     .cards-exames {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: $spacing-md;
       align-items: center;
 
       @include respond-to("md") {
         flex-direction: row;
         justify-content: center;
-        gap: 30px;
+        gap: $spacing-lg;
       }
 
       .card {
-        background: #f9fafb;
-        border-radius: 10px;
-        padding: 30px 20px;
-        box-shadow: 0px 0px 10px 0px #00000040;
+        background: $cor-cinza-claro;
+        border-radius: $radius-sm;
+        padding: $spacing-lg $spacing-md;
+        box-shadow: $shadow-dark;
         text-align: center;
         width: 282px;
         height: 202px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-        @include respond-to("md") {
-          width: 30%;
-          max-width: none;
-        }
-
-        &:hover {
-          transform: translateY(-5px);
-          box-shadow: 0px 0px 20px 0px #00000060;
-        }
+        @include card-hover;
 
         h3 {
-          font-size: 1.25rem;
+          font-size: $font-size-lg;
           font-weight: 600;
-          color: #1173d4;
-          margin-top: 15px;
-          margin-bottom: 15px;
-          color: #04031c;
-
-          @include respond-to("md") {
-            font-size: 1.3rem;
-          }
+          color: $cor-texto;
+          margin-top: $spacing-sm;
+          margin-bottom: $spacing-sm;
         }
 
         p {
-          font-size: 1.125rem;
-          color: #04031c;
+          font-size: $font-size-md;
+          color: $cor-texto;
           line-height: 1.5;
 
           @include respond-to("md") {
-            font-size: 0.95rem;
+            font-size: $font-size-sm;
           }
         }
       }
@@ -305,11 +308,11 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #fdefef;
-  padding: 40px 0;
+  background: $cor-bg-secao-2;
+  padding: $spacing-xl 0;
 
   &.prevencao-masculina {
-    background: #fff;
+    background: $cor-branco;
   }
 
   .container-prevencao {
@@ -317,9 +320,9 @@ header {
     width: 100%;
 
     h2 {
-      font-size: 2.8rem;
+      font-size: $font-size-2xl;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: $spacing-lg;
       font-weight: bold;
       background: linear-gradient(
         90deg,
@@ -343,7 +346,6 @@ header {
         #0074ee 68.5%,
         #5ea7ef 87.02%
       );
-
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -353,7 +355,7 @@ header {
     .cards {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 50px;
       justify-content: center;
 
       .card {
@@ -362,27 +364,26 @@ header {
         align-items: center;
         width: 250px;
         height: 400px;
-        background: #fff;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 4px 0px #00000040;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: $cor-branco;
+        padding: $spacing-xs;
+        border-radius: $radius-sm;
+        box-shadow: $shadow-medium;
+        @include card-hover;
 
         &:hover {
-          transform: translateY(-5px);
           box-shadow: 0px 0px 20px 0px #00000030;
         }
 
         img {
-          padding: 10px 0;
+          padding: $spacing-xs 0;
         }
 
         h3 {
-          font-family: "Roboto", sans-serif;
-          font-size: 1.25rem;
+          font-family: $font-secondary;
+          font-size: $font-size-lg;
           font-weight: 700;
-          color: #000;
-          margin-bottom: 15px;
+          color: $cor-texto;
+          margin-bottom: $spacing-sm;
         }
 
         ul {
@@ -391,9 +392,9 @@ header {
           text-align: left;
 
           li {
-            font-family: "Roboto", sans-serif;
-            font-size: 0.875rem;
-            color: #000;
+            font-family: $font-secondary;
+            font-size: $font-size-xs;
+            color: $cor-texto;
             line-height: 1.25rem;
             margin-bottom: 8px;
           }
@@ -404,21 +405,20 @@ header {
 }
 
 .section-alertas {
-  padding: 60px 20px;
-  background-color: #fff;
+  padding: $spacing-2xl $spacing-md;
+  background-color: $cor-branco;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   .container-alertas {
-    max-width: 1200px;
+    max-width: $max-width-container;
     width: 100%;
 
     h2 {
-      font-size: 2.8rem;
       text-align: center;
-      margin-bottom: 40px;
-      font-weight: 700;
+      margin-bottom: $spacing-xl;
+      @include texto-gradiente();
     }
 
     .cards-alertas {
@@ -427,14 +427,14 @@ header {
       justify-content: space-evenly;
 
       .card-alerta {
-        background: #fff;
-        border-radius: 15px;
-        padding: 25px 20px;
+        background: $cor-branco;
+        border-radius: $radius-md;
+        padding: 25px $spacing-md;
         margin-bottom: 25px;
         width: 100%;
         max-width: 450px;
-        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: $shadow-light;
+        transition: transform $transition-default, box-shadow $transition-default;
 
         &:hover {
           transform: translateY(-3px);
@@ -446,6 +446,7 @@ header {
 
           h3,
           p {
+            font-family: $font-secondary;
             color: map-get($cores-alertas, "rosa-texto");
           }
         }
@@ -455,6 +456,7 @@ header {
 
           h3,
           p {
+            font-family: $font-secondary;
             color: map-get($cores-alertas, "azul-texto");
           }
         }
@@ -464,6 +466,7 @@ header {
 
           h3,
           p {
+            font-family: $font-secondary;
             color: map-get($cores-alertas, "verde-texto");
           }
         }
@@ -473,6 +476,7 @@ header {
 
           h3,
           p {
+            font-family: $font-secondary;
             color: map-get($cores-alertas, "amarelo-texto");
           }
         }
@@ -480,16 +484,125 @@ header {
         .cabecalho {
           display: flex;
           align-items: center;
-          gap: 5px;
-          margin-bottom: 15px;
+          gap: $spacing-xs;
+          margin-bottom: $spacing-sm;
 
-          h3 {
-            font-size: 1.125rem;
+          h2 {
+            font-size: $font-size-md;
             font-weight: 700;
             margin: 0;
           }
         }
       }
+    }
+  }
+}
+
+footer {
+  height: 425px;
+  background: $cor-cinza-escuro;
+  color: $cor-branco;
+  padding-top: 70px;
+
+  .container-footer {
+    margin: 0 auto;
+    max-width: $max-width-footer;
+    width: 100%;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-xl;
+    margin-bottom: $spacing-xl;
+
+    .footer-coluna {
+      flex: 1;
+      margin: 0 70px;
+
+      .logo-footer {
+        display: flex;
+        align-items: center;
+        gap: $spacing-xs;
+        margin-bottom: 24px;
+
+        img {
+          max-width: 150px;
+          height: auto;
+        }
+      }
+
+      .slogan {
+        font-size: $font-size-base;
+        font-weight: 700;
+        color: $cor-branco;
+        font-family: $font-tertiary;
+      }
+
+      .descricao {
+        font-family: $font-tertiary;
+        font-size: $font-size-base;
+        line-height: 1.6;
+        color: #fefefe;
+        padding-top: $spacing-md;
+      }
+
+      h3 {
+        font-family: $font-tertiary;
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-md;
+        color: $cor-branco;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 12px;
+
+          a {
+            color: #fefefe;
+            font-size: $font-size-sm;
+            transition: color $transition-default;
+            display: block;
+            font-family: $font-tertiary;
+
+            &:hover {
+              color: #d3d3d3;
+            }
+          }
+        }
+      }
+
+      .descricao-footer {
+        padding-top: $spacing-xs;
+        font-size: $font-size-xs;
+        line-height: 1.9;
+        font-family: $font-tertiary;
+      }
+
+      .destaque {
+        color: $cor-branco;
+        font-weight: 600;
+        margin-top: $spacing-md;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        font-family: $font-tertiary;
+      }
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid $cor-borda;
+    text-align: center;
+    padding-top: 38px;
+
+    p {
+      font-size: $font-size-xs;
+      color: $cor-cinza-medio;
+      line-height: 1.6;
+      font-family: $font-tertiary;
     }
   }
 }
