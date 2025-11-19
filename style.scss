@@ -16,6 +16,7 @@ $texto-gigante: 2.8rem;
 $espacamento-pequeno: 10px;
 $espacamento-medio: 20px;
 $espacamento-grande: 40px;
+$espacamento-gigante: 107px;
 
 $fonte-principal: "Inter", sans-serif;
 $fonte-secundaria: "Roboto", sans-serif;
@@ -31,12 +32,17 @@ $fonte-terciaria: "Poppins", sans-serif;
 
 // ===== HEADER =====
 header {
-  min-height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: linear-gradient(135deg, #f0f4ff 0%, #e8f5e9 100%);
   padding: 20px;
+
+  @media (max-width: 767px) {
+    height: 100vh;
+    gap: 30px;
+  }
 
   @media (min-width: 768px) {
     background-image: url("./assets/image/bannerHeader.png");
@@ -48,40 +54,55 @@ header {
 
   .box-header {
     width: 100%;
-    max-width: 1200px;
-    padding: 15px 20px;
+    height: 10vh;
     border-radius: 50px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     background: linear-gradient(to right, #4247a2 0%, #52b095 100%);
-    margin-bottom: 40px;
 
     @media (max-width: 767px) {
-      padding: 10px 15px;
-      border-radius: 30px;
+      top: auto;
+      left: auto;
+      width: 100%;
+      margin-inline: auto;
+      margin-top: 20px;
+      padding: 8px 3px;
+      border-radius: 60px;
+
+      img {
+        width: 30%;
+      }
     }
 
     nav {
-      width: 100%;
+      list-style: none;
       display: flex;
+      gap: 0.8rem;
+      display: flex;
+      width: 60%;
+      height: 10vh;
       align-items: center;
       justify-content: space-evenly;
-      gap: 15px;
 
       @media (max-width: 767px) {
-        gap: 10px;
+        flex-direction: row;
+        justify-content: center;
+        width: 60%;
       }
 
       a {
         color: $cor-branco;
         font-family: $fonte-secundaria;
-        font-size: $texto-pequeno;
+        font-size: $texto-medio;
         transition: opacity 0.3s;
         white-space: nowrap;
 
-        @media (min-width: 768px) {
-          font-size: $texto-medio;
+        @media (max-width: 768px) {
+          font-size: $texto-pequeno !important;
+          width: 24.5vw;
+          white-space: nowrap;
+          overflow: hidden;
         }
 
         &:hover {
@@ -100,7 +121,7 @@ header {
     text-align: center;
     padding: 20px;
 
-    @media (min-width: 768px) {
+    @media (min-width: 767px) {
       align-items: flex-start;
       text-align: left;
       padding: 40px;
@@ -110,7 +131,8 @@ header {
       margin-bottom: 30px;
 
       h2 {
-        font-size: $texto-grande;
+        max-width: 600px;
+        font-size: $texto-gigante;
         font-weight: bold;
         background: linear-gradient(to right, $cor-azul, $cor-verde);
         -webkit-background-clip: text;
@@ -119,35 +141,35 @@ header {
         margin-bottom: $espacamento-medio;
         line-height: 1.2;
 
-        @media (min-width: 768px) {
-          font-size: $texto-gigante;
-          max-width: 600px;
+        @media (max-width: 767px) {
+          font-size: $texto-grande;
+          margin-bottom: $espacamento-grande;
+          width: 229px;
         }
       }
 
       p {
-        font-size: $texto-normal;
+        font-size: $texto-medio;
         color: $cor-texto;
+        max-width: 305px;
         margin-bottom: $espacamento-medio;
         line-height: 1.6;
 
-        @media (min-width: 768px) {
+        @media (max-width: 767px) {
           font-size: $texto-medio;
-          max-width: 500px;
+          margin-bottom: $espacamento-medio;
         }
       }
     }
 
     .box-botoes {
       display: flex;
-      flex-direction: column;
       gap: $espacamento-pequeno;
-      width: 100%;
 
-      @media (min-width: 768px) {
-        flex-direction: row;
+      @media (max-width: 767px) {
         gap: $espacamento-medio;
-        width: auto;
+        flex-direction: column;
+        align-items: center;
       }
 
       .btn-blue {
@@ -201,8 +223,8 @@ header {
   padding: 60px 20px;
   text-align: center;
 
-  @media (min-width: 768px) {
-    padding: 80px 40px;
+  @media (max-width: 767px) {
+    padding: 30px 20px;
   }
 
   .container-exames {
@@ -218,30 +240,30 @@ header {
       background-clip: text;
       margin-bottom: $espacamento-medio;
 
-      @media (min-width: 768px) {
-        font-size: $texto-gigante;
+      @media (max-width: 767px) {
+        font-size: $texto-medio;
       }
     }
 
     .descricao {
-      font-size: $texto-normal;
+      font-size: $texto-medio;
       color: $cor-texto;
-      margin-bottom: $espacamento-grande;
+      margin: $espacamento-grande $espacamento-gigante;
       line-height: 1.6;
 
-      @media (min-width: 768px) {
-        font-size: $texto-medio;
-        padding: 0 100px;
+      @media (max-width: 767px) {
+        font-size: $texto-normal;
+        margin: $espacamento-medio 0;
       }
     }
 
     .cards-exames {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       gap: $espacamento-medio;
       align-items: center;
 
-      @media (min-width: 768px) {
+      @media (max-width: 767px) {
         flex-direction: row;
         justify-content: center;
         gap: $espacamento-grande;
@@ -284,8 +306,8 @@ header {
   background: #fdefef;
   text-align: center;
 
-  @media (min-width: 768px) {
-    padding: 80px 40px;
+  @media (max-width: 767px) {
+    padding: 20px 40px;
   }
 
   &.prevencao-masculina {
@@ -297,7 +319,7 @@ header {
     margin: 0 auto;
 
     h2 {
-      font-size: $texto-grande;
+      font-size: $texto-gigante;
       font-weight: bold;
       margin-bottom: $espacamento-grande;
       background: linear-gradient(90deg, #f9016f, #930885, #d038aa, #851c87);
@@ -305,8 +327,8 @@ header {
       -webkit-text-fill-color: transparent;
       background-clip: text;
 
-      @media (min-width: 768px) {
-        font-size: $texto-gigante;
+      @media (max-width: 767px) {
+        font-size: 1.5rem;
       }
 
       &.masculina {
@@ -321,17 +343,21 @@ header {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+
+        @media (max-width: 767px) {
+          font-size: 1.4rem;
+        }
       }
     }
 
     .cards {
       display: flex;
       flex-wrap: wrap;
-      gap: $espacamento-medio;
+      gap: $espacamento-grande;
       justify-content: center;
 
-      @media (min-width: 768px) {
-        gap: $espacamento-grande;
+      @media (max-width: 767px) {
+        gap: $espacamento-medio;
       }
 
       .card {
@@ -385,8 +411,8 @@ header {
   background: $cor-branco;
   text-align: center;
 
-  @media (min-width: 768px) {
-    padding: 80px 40px;
+  @media (max-width: 767px) {
+    padding: 20px;
   }
 
   .container-alertas {
@@ -394,7 +420,7 @@ header {
     margin: 0 auto;
 
     h2 {
-      font-size: $texto-grande;
+      font-size: $texto-gigante;
       font-weight: bold;
       background: linear-gradient(to right, $cor-azul, $cor-verde);
       -webkit-background-clip: text;
@@ -402,8 +428,8 @@ header {
       background-clip: text;
       margin-bottom: $espacamento-grande;
 
-      @media (min-width: 768px) {
-        font-size: $texto-gigante;
+      @media (max-width: 767px) {
+        font-size: 1.5rem;
       }
     }
 
@@ -420,6 +446,10 @@ header {
         max-width: 450px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s, box-shadow 0.3s;
+
+        @media (max-width: 767px) {
+          padding: 15px;
+        }
 
         &:hover {
           transform: translateY(-3px);
@@ -452,9 +482,17 @@ header {
           gap: $espacamento-pequeno;
           margin-bottom: $espacamento-pequeno;
 
+          @media (max-width: 767px) {
+            gap: 5px;
+          }
+
           h3 {
             font-size: $texto-medio;
             font-weight: 700;
+
+            @media (max-width: 767px) {
+              font-size: $texto-normal;
+            }
           }
         }
 
@@ -463,6 +501,12 @@ header {
           font-size: $texto-normal;
           text-align: left;
           line-height: 1.5;
+
+          @media (max-width: 767px) {
+            font-size: $texto-pequeno;
+            line-height: 1.4;
+            text-align: center;
+          }
         }
       }
     }
@@ -473,10 +517,10 @@ header {
 footer {
   background: #313461;
   color: $cor-branco;
-  padding: 60px 20px;
+  padding: 40px;
 
-  @media (min-width: 768px) {
-    padding: 80px 40px;
+  @media (max-width: 767px) {
+    padding: 30px;
   }
 
   .container-footer {
@@ -486,13 +530,14 @@ footer {
 
   .footer-content {
     display: flex;
-    flex-direction: column;
     gap: $espacamento-grande;
     margin-bottom: $espacamento-grande;
 
-    @media (min-width: 768px) {
-      flex-direction: row;
-      justify-content: space-between;
+    @media (max-width: 767px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
     .footer-coluna {
@@ -504,6 +549,11 @@ footer {
         gap: $espacamento-pequeno;
         margin-bottom: $espacamento-medio;
 
+        @media (max-width: 767px) {
+          justify-content: center;
+          align-items: center;
+        }
+
         img {
           max-width: 150px;
           height: auto;
@@ -514,6 +564,10 @@ footer {
         font-size: $texto-normal;
         font-weight: 700;
         font-family: $fonte-terciaria;
+
+        @media (max-width: 767px) {
+          font-size: $texto-pequeno;
+        }
       }
 
       .descricao {
@@ -521,12 +575,22 @@ footer {
         font-size: $texto-normal;
         margin-top: $espacamento-pequeno;
         line-height: 1.6;
+
+        @media (max-width: 767px) {
+          font-size: $texto-pequeno;
+          font-weight: 400;
+        }
       }
 
       h3 {
         font-family: $fonte-terciaria;
         font-size: $texto-medio;
         margin-bottom: $espacamento-medio;
+
+        @media (max-width: 767px) {
+          font-size: $texto-medio;
+          margin-bottom: $espacamento-pequeno;
+        }
       }
 
       ul {
@@ -535,11 +599,20 @@ footer {
         li {
           margin-bottom: $espacamento-pequeno;
 
+          @media (max-width: 767px) {
+            margin-bottom: 5px;
+          }
+
           a {
             color: $cor-branco;
             font-size: $texto-normal;
             font-family: $fonte-terciaria;
             transition: color 0.3s;
+
+            @media (max-width: 767px) {
+              font-size: $texto-pequeno;
+              font-weight: 400;
+            }
 
             &:hover {
               color: #d3d3d3;
@@ -553,6 +626,12 @@ footer {
         font-family: $fonte-terciaria;
         line-height: 1.6;
         margin-top: $espacamento-pequeno;
+
+        @media (max-width: 767px) {
+          font-size: 14px;
+          width: 278px;
+          margin-top: $espacamento-grande;
+        }
       }
 
       .destaque {
