@@ -1,26 +1,63 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
 
+// Fontes
+$fonte-principal: "Inter", sans-serif;
+$fonte-secundaria: "Roboto", sans-serif;
+$fonte-terciaria: "Poppins", sans-serif;
+
+// Cores Base
 $cor-azul: #1173d4;
 $cor-verde: #33cc73;
 $cor-texto: #04031c;
 $cor-branco: #fff;
 $cor-cinza-claro: #f9fafb;
-$cor-fundo-secao: #f8f9fa;
+$cor-cinza-medio: #d1d5db;
+$cor-cinza-escuro: #313461;
+$cor-borda: #9fabbc;
 
+// Cores de Gradiente Header
+$cor-gradiente-azul-1: #4247a2;
+$cor-gradiente-azul-2: #52b095;
+
+// Cores de Background
+$cor-fundo-secao: #f8f9fa;
+$cor-fundo-prevencao-fem: #fdefef;
+
+// Cores de Gradiente Feminino
+$cor-gradiente-fem-1: #f9016f;
+$cor-gradiente-fem-2: #930885;
+$cor-gradiente-fem-3: #d038aa;
+$cor-gradiente-fem-4: #851c87;
+
+// Cores de Gradiente Masculino
+$cor-gradiente-masc-1: #3373d2;
+$cor-gradiente-masc-2: #6f95c7;
+$cor-gradiente-masc-3: #7bb5f5;
+$cor-gradiente-masc-4: #0074ee;
+$cor-gradiente-masc-5: #5ea7ef;
+
+// Cores de Alertas
+$cor-alerta-rosa-bg: #f9d5e5;
+$cor-alerta-rosa-texto: #ad346a;
+$cor-alerta-azul-bg: #cfe2f3;
+$cor-alerta-azul-texto: #2769a3;
+$cor-alerta-verde-bg: #d4edda;
+$cor-alerta-verde-texto: #244a2d;
+$cor-alerta-amarelo-bg: #ffe9c2;
+$cor-alerta-amarelo-texto: #976c00;
+
+// Tamanhos de Fonte
 $texto-pequeno: 0.875rem;
 $texto-normal: 1rem;
 $texto-medio: 1.25rem;
 $texto-grande: 1.8rem;
 $texto-gigante: 2.8rem;
 
+// Espaçamentos
 $espacamento-pequeno: 10px;
 $espacamento-medio: 20px;
 $espacamento-grande: 40px;
 $espacamento-gigante: 107px;
-
-$fonte-principal: "Inter", sans-serif;
-$fonte-secundaria: "Roboto", sans-serif;
-$fonte-terciaria: "Poppins", sans-serif;
 
 * {
   margin: 0;
@@ -30,7 +67,6 @@ $fonte-terciaria: "Poppins", sans-serif;
   font-family: $fonte-principal;
 }
 
-// ===== HEADER =====
 header {
   height: 90vh;
   display: flex;
@@ -59,7 +95,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: linear-gradient(to right, #4247a2 0%, #52b095 100%);
+    background: linear-gradient(to right, $cor-gradiente-azul-1 0%, $cor-gradiente-azul-2 100%);
 
     @media (max-width: 767px) {
       top: auto;
@@ -79,7 +115,6 @@ header {
       list-style: none;
       display: flex;
       gap: 0.8rem;
-      display: flex;
       width: 60%;
       height: 10vh;
       align-items: center;
@@ -189,7 +224,7 @@ header {
         }
 
         &:hover {
-          background: #0d5fb8;
+          background: darken($cor-azul, 10%);
         }
       }
 
@@ -217,7 +252,6 @@ header {
   }
 }
 
-// ===== SEÇÃO EXAMES =====
 .section-exames {
   background: $cor-fundo-secao;
   padding: 60px 20px;
@@ -300,10 +334,9 @@ header {
   }
 }
 
-// ===== SEÇÃO PREVENÇÃO =====
 .section-prevencao {
   padding: 60px 20px;
-  background: #fdefef;
+  background: $cor-fundo-prevencao-fem;
   text-align: center;
 
   @media (max-width: 767px) {
@@ -322,7 +355,13 @@ header {
       font-size: $texto-gigante;
       font-weight: bold;
       margin-bottom: $espacamento-grande;
-      background: linear-gradient(90deg, #f9016f, #930885, #d038aa, #851c87);
+      background: linear-gradient(
+        90deg,
+        $cor-gradiente-fem-1,
+        $cor-gradiente-fem-2,
+        $cor-gradiente-fem-3,
+        $cor-gradiente-fem-4
+      );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -334,11 +373,11 @@ header {
       &.masculina {
         background: linear-gradient(
           90deg,
-          #3373d2,
-          #6f95c7,
-          #7bb5f5,
-          #0074ee,
-          #5ea7ef
+          $cor-gradiente-masc-1,
+          $cor-gradiente-masc-2,
+          $cor-gradiente-masc-3,
+          $cor-gradiente-masc-4,
+          $cor-gradiente-masc-5
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -405,7 +444,6 @@ header {
   }
 }
 
-// ===== SEÇÃO ALERTAS =====
 .section-alertas {
   padding: 60px 20px;
   background: $cor-branco;
@@ -457,23 +495,23 @@ header {
         }
 
         &.rosa {
-          background: #f9d5e5;
-          color: #ad346a;
+          background: $cor-alerta-rosa-bg;
+          color: $cor-alerta-rosa-texto;
         }
 
         &.azul {
-          background: #cfe2f3;
-          color: #2769a3;
+          background: $cor-alerta-azul-bg;
+          color: $cor-alerta-azul-texto;
         }
 
         &.verde {
-          background: #d4edda;
-          color: #244a2d;
+          background: $cor-alerta-verde-bg;
+          color: $cor-alerta-verde-texto;
         }
 
         &.amarelo {
-          background: #ffe9c2;
-          color: #976c00;
+          background: $cor-alerta-amarelo-bg;
+          color: $cor-alerta-amarelo-texto;
         }
 
         .cabecalho {
@@ -513,9 +551,8 @@ header {
   }
 }
 
-// ===== FOOTER =====
 footer {
-  background: #313461;
+  background: $cor-cinza-escuro;
   color: $cor-branco;
   padding: 40px;
 
@@ -615,7 +652,7 @@ footer {
             }
 
             &:hover {
-              color: #d3d3d3;
+              color: $cor-cinza-medio;
             }
           }
         }
@@ -644,13 +681,13 @@ footer {
   }
 
   .footer-bottom {
-    border-top: 1px solid #9fabbc;
+    border-top: 1px solid $cor-borda;
     padding-top: $espacamento-grande;
     text-align: center;
 
     p {
       font-size: $texto-pequeno;
-      color: #d1d5db;
+      color: $cor-cinza-medio;
       font-family: $fonte-terciaria;
     }
   }
